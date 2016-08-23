@@ -1,0 +1,5 @@
+package: github.com/ziflex/update-desktop
+import:
+- package: github.com/Unknwon/goconfig
+- package: github.com/codegangsta/cli
+  version: ~1.18.0

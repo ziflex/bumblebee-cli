@@ -1,15 +1,16 @@
 package main
 
 import (
-	"github.com/codegangsta/cli"
-	"github.com/Unknwon/goconfig"
-	"os"
+	"errors"
 	"fmt"
 	"io/ioutil"
+	"os"
 	"path/filepath"
-	"strings"
 	"strconv"
-	"errors"
+	"strings"
+
+	"github.com/Unknwon/goconfig"
+	"github.com/codegangsta/cli"
 )
 
 func IfError(err error) {
@@ -34,7 +35,7 @@ func FindSectionsByKey(file *goconfig.ConfigFile, name string) ([]string, error)
 		}
 	}
 
-	return  result, nil
+	return result, nil
 }
 
 func CheckPermissions(path string) error {
@@ -49,16 +50,16 @@ func CheckPermissions(path string) error {
 	fmt.Println("Permissions:", perm)
 
 	if string(perm) != "-rwxr-xr-x" {
-		return nil;
+		return nil
 		//return errors.New("No persmissions")
 	}
 
 	return nil
 }
 
-func Do(value string) string  {
+func Do(value string) string {
 	if strings.HasPrefix(value, "primusrun") {
-		return  value;
+		return value
 	}
 
 	return "primusrun " + value
@@ -66,29 +67,29 @@ func Do(value string) string  {
 
 func Revert(value string) string {
 	if !strings.HasPrefix(value, "primusrun") {
-		return  value;
+		return value
 	}
 
 	return strings.Replace(value, "primusrun", "", 1)
 }
 
-
 func main() {
 	app := cli.NewApp()
+	app.Version = "1.0.0"
 	app.Name = "Update .desktop"
 	app.Usage = "Updated .desktop files in order to run apps wiht 'primusrun' command"
-	app.Flags = []cli.Flag {
+	app.Flags = []cli.Flag{
 		cli.BoolFlag{
-			Name: "revert",
-			Usage:"reverts operation",
+			Name:  "revert",
+			Usage: "reverts operation",
 		},
 		cli.StringFlag{
-			Name: "pattern",
+			Name:  "pattern",
 			Value: "",
 			Usage: "files look up pattern",
 		},
 		cli.StringFlag{
-			Name: "files",
+			Name:  "files",
 			Value: "",
 			Usage: "coma separates list of target files",
 		},
@@ -141,9 +142,8 @@ func main() {
 					targetFileName := strings.TrimSpace(f)
 					matched, err = filepath.Match(targetFileName, name)
 
-
 					if matched == false {
-						matched = targetFileName == name;
+						matched = targetFileName == name
 					}
 
 					if matched {
@@ -157,7 +157,7 @@ func main() {
 			}
 
 			fullName := filepath.Join(path, file.Name())
-			cfg, err  := goconfig.LoadConfigFile(fullName)
+			cfg, err := goconfig.LoadConfigFile(fullName)
 			IfError(err)
 
 			sections, err := FindSectionsByKey(cfg, "Exec")
