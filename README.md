@@ -1,4 +1,4 @@
-# update-desktop
+# bumblebee-gnome
 CLI tool that helps to manage Bumblebee dependant applications
 
 # Usage
