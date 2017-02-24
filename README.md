@@ -1,9 +1,17 @@
 # bumblebee-gnome
 CLI tool that helps to manage Bumblebee dependant applications
 
-# Usage
+## Installation
 
-## Add app
+```sh
+    git clone https://github.com/ziflex/bumblebee-gnome
+    cd ./bumblebee-gnome
+    make install
+```
+
+## Usage
+
+### Add app
 
 Register application and add prefix to dedicated ``.desktop`` file
 
@@ -17,7 +25,7 @@ It is possible to pass as many application names as needed
 bumblebee-gnome add atom gogland telegram slack
 ````
 
-## Remove app
+### Remove app
 
 Unregister application and remove prefix from dedicated ``.desktop``
 
@@ -31,7 +39,7 @@ It is possible to pass as many application names as needed
 bumblebee-gnome remove atom gogland telegram slack
 ````
 
-## Show registered apps
+### Show registered apps
 
 Check what apps are registered and whether they are synced with their dedicated ``.desktop`` files
 
@@ -45,7 +53,7 @@ See all apps in system and whether they are registered
 bumblebee-gnome ls -a
 ```
 
-## Syncing
+### Syncing
 
 Update files of registered apps
 

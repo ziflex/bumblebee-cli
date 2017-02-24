@@ -5,11 +5,14 @@ export GO15VENDOREXPERIMENT=1
 
 default: build
 
-build: vet install
+install: build
+	sudo cp ./bin/bumblebee-gnome /usr/bin/
+
+build: vet vendors
 	go build -v -o ./bin/bumblebee-gnome ./src/main.go
 
-install:
-	glide install	
+vendors:
+	glide install
 
 doc:
 	godoc -http=:6060 -index
