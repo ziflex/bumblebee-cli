@@ -10,6 +10,7 @@ import (
 	"github.com/ziflex/bumblebee-gnome/src/system/storage"
 	"github.com/ziflex/bumblebee-gnome/src/system/utils"
 	"strings"
+	"sort"
 )
 
 var (
@@ -86,19 +87,22 @@ func NewListCommand(logger *logging.Logger, entryRepo storage.EntryRepository, s
 }
 
 func printSimple(entries map[string]*core.Entry, files map[string]*fs.File) error {
-	pairs := make(map[string]string)
+	list := make(map[string]string)
+	names := make([]string, 0, len(entries))
 	longestName := 0
 	var err error
 
 	for _, entry := range entries {
 		file, ok := files[entry.Name]
 
+		names = append(names, entry.Name)
+
 		if longestName < len(entry.Name) {
 			longestName = len(entry.Name)
 		}
 
 		if !ok {
-			pairs[entry.Name] = "-"
+			list[entry.Name] = "-"
 			continue
 		}
 
@@ -111,6 +115,7 @@ func printSimple(entries map[string]*core.Entry, files map[string]*fs.File) erro
 
 		synced := true
 
+		// check whether all values are synced
 		for _, value := range values {
 			if !core.IsGPUEnabled(value) {
 				synced = false
@@ -118,7 +123,7 @@ func printSimple(entries map[string]*core.Entry, files map[string]*fs.File) erro
 			}
 		}
 
-		pairs[entry.Name] = fmt.Sprintf("%t", synced)
+		list[entry.Name] = fmt.Sprintf("%t", synced)
 	}
 
 	if err != nil {
@@ -127,7 +132,11 @@ func printSimple(entries map[string]*core.Entry, files map[string]*fs.File) erro
 
 	fmt.Println(fmt.Sprintf("NAME %s SYNCED", getSpaces(longestName, "NAME")))
 
-	for name, synced := range pairs {
+	sort.Strings(names)
+
+	for _, name := range names {
+		synced := list[name]
+
 		fmt.Println(fmt.Sprintf("%s %s %s", name, getSpaces(longestName, name), synced))
 	}
 
@@ -135,9 +144,10 @@ func printSimple(entries map[string]*core.Entry, files map[string]*fs.File) erro
 }
 
 func printFull(entries map[string]*core.Entry, names []string) {
-	pairs := make(map[string]bool)
+	list := make(map[string]bool)
 	longestName := 0
 
+	// get formatting information and whether app is enabled to use GPU
 	for _, name := range names {
 		_, used := entries[name]
 
@@ -145,12 +155,16 @@ func printFull(entries map[string]*core.Entry, names []string) {
 			longestName = len(name)
 		}
 
-		pairs[name] = used
+		list[name] = used
 	}
+
+	sort.Strings(names)
 
 	fmt.Println(fmt.Sprintf("NAME %s ENABLED", getSpaces(longestName, "NAME")))
 
-	for name, enabled := range pairs {
+	for _, name := range names {
+		enabled := list[name]
+
 		fmt.Println(fmt.Sprintf("%s %s %t", name, getSpaces(longestName, name), enabled))
 	}
 }

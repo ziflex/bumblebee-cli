@@ -29,7 +29,7 @@ func NewApplication() (*Application, error) {
 	app := &Application{}
 
 	app.engine = cli.NewApp()
-	app.engine.Version = "2.0.0"
+	app.engine.Version = "2.1.0"
 	app.engine.Name = "bumblebee-gnome"
 	app.engine.Usage = "Manager for bumblebee dependant applications"
 
