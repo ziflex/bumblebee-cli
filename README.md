@@ -1,16 +1,54 @@
 # update-desktop
-CLI tool that helps to convert .desktop files in order to run apps using Bumblebee
+CLI tool that helps to manage Bumblebee dependant applications
 
-# USAGE
+# Usage
 
-````sh
-   main [global options] command [command options] [arguments...]
+## Add app
+
+Register application and add prefix to dedicated ``.desktop`` file
+
+```sh
+bumblebee-gnome add atom
 ````
-   
-## OPTIONS
--   `` --revert ``		reverts operation
--   `` --pattern `` 		files look up pattern
--   `` --files `` 		coma separates list of target files
--   `` --help, -h ``		show help
--   `` --version, -v ``	print the version
 
+It is possible to pass as many application names as needed
+
+```sh
+bumblebee-gnome add atom gogland telegram slack
+````
+
+## Remove app
+
+Unregister application and remove prefix from dedicated ``.desktop``
+
+```sh
+bumblebee-gnome remove atom
+````
+
+It is possible to pass as many application names as needed
+
+```sh
+bumblebee-gnome remove atom gogland telegram slack
+````
+
+## Show registered apps
+
+Check what apps are registered and whether they are synced with their dedicated ``.desktop`` files
+
+```sh
+bumblebee-gnome ls
+```
+
+See all apps in system and whether they are registered
+
+```sh
+bumblebee-gnome ls -a
+```
+
+## Syncing
+
+Update files of registered apps
+
+```sh
+bumblebee-gnome sync
+```

@@ -1,8 +1,24 @@
-hash: c7c18093764c8a5e4776909369d772d740113b6a6ba03deba089da471a3bf587
-updated: 2016-08-23T11:24:34.023018521-04:00
+hash: d9c63a2339f279f62828b2d7082741a74979ac8a75caaaf4951ace5041c92955
+updated: 2017-02-22T15:33:15.993810647-05:00
 imports:
-- name: github.com/codegangsta/cli
-  version: 1efa31f08b9333f1bd4882d61f9d668a70cd902e
+- name: github.com/go-errors/errors
+  version: 8fa88b06e5974e97fbf9899a7f86a344bfd1f105
+- name: github.com/go-ini/ini
+  version: 74bdc99692c3408cb103221e38675ce8fda0a718
+- name: github.com/mattn/go-sqlite3
+  version: ca5e3819723d8eeaf170ad510e7da1d6d2e94a08
+- name: github.com/natefinch/lumberjack
+  version: 8ec9c6b748e0c75183863d208c8442319ddc5321
 - name: github.com/Unknwon/goconfig
   version: 5f601ca6ef4d5cea8d52be2f8b3a420ee4b574a5
+- name: github.com/urfave/cli
+  version: 0bdeddeeb0f650497d603c4ad7b20cfe685682f6
+- name: golang.org/x/net
+  version: 6b27048ae5e6ad1ef927e72e437531493de612fe
+  subpackages:
+  - context
+- name: golang.org/x/sync
+  version: 86ddc858aa39d0f6cccccd733e482ddc52b852e9
+  subpackages:
+  - errgroup
 testImports: []

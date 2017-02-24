@@ -1,5 +1,16 @@
-package: github.com/ziflex/update-desktop
+package: github.com/ziflex/bumblebee-gnome
 import:
 - package: github.com/Unknwon/goconfig
-- package: github.com/codegangsta/cli
-  version: ~1.18.0
+- package: github.com/urfave/cli
+  version: ~1.19.1
+- package: golang.org/x/sync
+- package: golang.org/x/net
+  subpackages:
+  - context
+- package: github.com/go-ini/ini
+  version: ^1.24.0
+- package: github.com/mattn/go-sqlite3
+  version: ^1.2.0
+- package: github.com/natefinch/lumberjack
+  version: ^1.0.0
+- package: github.com/go-errors/errors

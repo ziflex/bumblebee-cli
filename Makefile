@@ -1,11 +1,12 @@
 .PHONY: build install doc fmt lint run
 
 export GOPATH
+export GO15VENDOREXPERIMENT=1
 
 default: build
 
 build: vet install
-	go build -v -o ./bin/main ./src/main.go
+	go build -v -o ./bin/bumblebee-gnome ./src/main.go
 
 install:
 	glide install	
