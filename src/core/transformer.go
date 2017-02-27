@@ -22,15 +22,15 @@ func NewTransformer(logger *logging.Logger, dir *fs.Directory) *Transformer {
 	return &Transformer{logger, dir}
 }
 
-func (t *Transformer) Do(entries []*Entry, prefix string) ([]string, error) {
-	return t.transform(entries, prefix)
+func (t *Transformer) Do(entries []*Entry, prefix string, strict bool) ([]string, error) {
+	return t.transform(entries, prefix, strict)
 }
 
 func (t *Transformer) Revert(entries []*Entry) ([]string, error) {
-	return t.transform(entries, "")
+	return t.transform(entries, "", false)
 }
 
-func (t *Transformer) transform(entries []*Entry, prefix string) ([]string, error) {
+func (t *Transformer) transform(entries []*Entry, prefix string, strict bool) ([]string, error) {
 	results := make([]string, 0, len(entries))
 
 	if len(entries) == 0 {
@@ -66,7 +66,7 @@ func (t *Transformer) transform(entries []*Entry, prefix string) ([]string, erro
 		nextValues := make(map[string]string)
 
 		for name, currentValue := range currentValues {
-			nextValue, update := t.transformValue(currentValue, prefix)
+			nextValue, update := t.transformValue(currentValue, prefix, strict)
 
 			if update {
 				results = append(results, strings.Replace(file.Name(), ".desktop", "", -1))
@@ -93,7 +93,7 @@ func (t *Transformer) transform(entries []*Entry, prefix string) ([]string, erro
 	return results, nil
 }
 
-func (t *Transformer) transformValue(currentValue string, prefix string) (string, bool) {
+func (t *Transformer) transformValue(currentValue string, prefix string, strict bool) (string, bool) {
 	update := false
 	nextValue := currentValue
 
@@ -101,6 +101,27 @@ func (t *Transformer) transformValue(currentValue string, prefix string) (string
 		if !IsGPUEnabled(currentValue) {
 			nextValue = fmt.Sprintf("%s %s", prefix, currentValue)
 			update = true
+		} else {
+			// It doesn't matter which prefix is used
+			if !strict {
+				return currentValue, false
+			}
+
+			// specific prefix must be used
+			if strings.HasPrefix(currentValue, prefix) {
+				return currentValue, false
+			}
+
+			// remove current prefix
+			nextValue, update = t.transformValue(currentValue, "", false)
+
+			// well... is shouldn't be false, but... who knows
+			if !update {
+				return currentValue, false
+			}
+
+			// set given prefix
+			nextValue, update = t.transformValue(nextValue, prefix, false)
 		}
 	} else {
 		startIndex := -1

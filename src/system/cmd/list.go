@@ -9,8 +9,8 @@ import (
 	"github.com/ziflex/bumblebee-ui/src/system/logging"
 	"github.com/ziflex/bumblebee-ui/src/system/storage"
 	"github.com/ziflex/bumblebee-ui/src/system/utils"
-	"strings"
 	"sort"
+	"strings"
 )
 
 var (
@@ -20,12 +20,12 @@ var (
 func NewListCommand(logger *logging.Logger, entryRepo storage.EntryRepository, settingsRepo storage.SettingsRepository) *cli.Command {
 	return &cli.Command{
 		Name:    "ls",
-		Usage:   "show list of registered applications",
+		Usage:   "Shows list of registered applications",
 		Aliases: []string{"l"},
 		Flags: []cli.Flag{
 			cli.BoolFlag{
 				Name:  "a",
-				Usage: "show all avialable applications",
+				Usage: "Shows all avialable applications in a system",
 			},
 		},
 		Action: func(ctx *cli.Context) error {

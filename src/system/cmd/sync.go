@@ -48,7 +48,7 @@ func NewSyncCommand(logger *logging.Logger, entryRepo storage.EntryRepository, s
 
 			transformer := core.NewTransformer(logger, fs.NewDirectory(logger, settings.Directory))
 
-			results, err := transformer.Do(list, settings.Prefix)
+			results, err := transformer.Do(list, settings.Prefix, false)
 
 			if err != nil {
 				logger.Error(utils.ErrorStack(err))

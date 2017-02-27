@@ -6,10 +6,10 @@ export GO15VENDOREXPERIMENT=1
 default: build
 
 install: build
-	sudo cp ./bin/bumblebee-gnome /usr/bin/
+	sudo cp ./bin/bumblebee-ui /usr/bin/
 
 build: vet vendors
-	go build -v -o ./bin/bumblebee-gnome ./src/main.go
+	go build -v -o ./bin/bumblebee-ui ./src/main.go
 
 vendors:
 	glide install

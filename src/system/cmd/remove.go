@@ -17,7 +17,7 @@ var (
 func NewRemoveCommand(logger *logging.Logger, entryRepo storage.EntryRepository, settingsRepo storage.SettingsRepository) *cli.Command {
 	return &cli.Command{
 		Name:    "remove",
-		Usage:   "remove an application from the registry",
+		Usage:   "Removes an application from the app registry",
 		Aliases: []string{"r"},
 		Action: func(ctx *cli.Context) error {
 			if ctx.NArg() == 0 {

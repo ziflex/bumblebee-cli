@@ -11,7 +11,8 @@ import (
 )
 
 var (
-	ERR_ADD_CMD     = errors.New("failed to add new entry")
+	ERR_ADD_CMD     = errors.New("failed to add new application")
+	ERR_GET_ENTRIES = errors.New("failed to get list of registered applications")
 	ERR_MISSED_ARGS = errors.New("missed args")
 )
 
@@ -25,7 +26,7 @@ type AddCommand struct {
 func NewAddCommand(logger *logging.Logger, entryRepo storage.EntryRepository, settingsRepo storage.SettingsRepository) *cli.Command {
 	return &cli.Command{
 		Name:    "add",
-		Usage:   "add an application to the registry",
+		Usage:   "Adds a new application to the app registry",
 		Aliases: []string{"a"},
 		Action: func(ctx *cli.Context) error {
 			if ctx.NArg() == 0 {
@@ -47,7 +48,7 @@ func NewAddCommand(logger *logging.Logger, entryRepo storage.EntryRepository, se
 
 			transformer := core.NewTransformer(logger, fs.NewDirectory(logger, settings.Directory))
 
-			_, err = transformer.Do(entries, settings.Prefix)
+			_, err = transformer.Do(entries, settings.Prefix, false)
 
 			if err != nil {
 				logger.Error(utils.ErrorStack(err))
