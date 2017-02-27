@@ -30,7 +30,7 @@ func NewApplication() (*Application, error) {
 	app.engine = cli.NewApp()
 	app.engine.Version = "2.2.0"
 	app.engine.Name = "bumblebee-ui"
-	app.engine.Usage = "Manager for bumblebee dependant applications"
+	app.engine.Usage = "CLI manager for bumblebee dependant applications"
 
 	logsDir := fmt.Sprintf("/var/log/%s/", strings.ToLower(app.engine.Name))
 
