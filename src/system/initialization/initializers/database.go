@@ -4,9 +4,9 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/go-errors/errors"
-	"github.com/ziflex/bumblebee-gnome/src/system/logging"
-	"github.com/ziflex/bumblebee-gnome/src/system/storage"
-	"github.com/ziflex/bumblebee-gnome/src/system/utils"
+	"github.com/ziflex/bumblebee-ui/src/system/logging"
+	"github.com/ziflex/bumblebee-ui/src/system/storage"
+	"github.com/ziflex/bumblebee-ui/src/system/utils"
 )
 
 var (

@@ -1,11 +1,11 @@
-# bumblebee-gnome
+# bumblebee-ui
 CLI tool that helps to manage Bumblebee dependant applications
 
 ## Installation
 
 ```sh
-    git clone https://github.com/ziflex/bumblebee-gnome
-    cd ./bumblebee-gnome
+    git clone https://github.com/ziflex/bumblebee-ui
+    cd ./bumblebee-ui
     make install
 ```
 
@@ -16,13 +16,13 @@ CLI tool that helps to manage Bumblebee dependant applications
 Register application and add prefix to dedicated ``.desktop`` file
 
 ```sh
-bumblebee-gnome add atom
+bumblebee-ui add atom
 ````
 
 It is possible to pass as many application names as needed
 
 ```sh
-bumblebee-gnome add atom gogland telegram slack
+bumblebee-ui add atom gogland telegram slack
 ````
 
 ### Remove app
@@ -30,13 +30,13 @@ bumblebee-gnome add atom gogland telegram slack
 Unregister application and remove prefix from dedicated ``.desktop``
 
 ```sh
-bumblebee-gnome remove atom
+bumblebee-ui remove atom
 ````
 
 It is possible to pass as many application names as needed
 
 ```sh
-bumblebee-gnome remove atom gogland telegram slack
+bumblebee-ui remove atom gogland telegram slack
 ````
 
 ### Show registered apps
@@ -44,13 +44,13 @@ bumblebee-gnome remove atom gogland telegram slack
 Check what apps are registered and whether they are synced with their dedicated ``.desktop`` files
 
 ```sh
-bumblebee-gnome ls
+bumblebee-ui ls
 ```
 
 See all apps in system and whether they are registered
 
 ```sh
-bumblebee-gnome ls -a
+bumblebee-ui ls -a
 ```
 
 ### Syncing
@@ -58,5 +58,5 @@ bumblebee-gnome ls -a
 Update files of registered apps
 
 ```sh
-bumblebee-gnome sync
+bumblebee-ui sync
 ```

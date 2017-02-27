@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"github.com/ziflex/bumblebee-gnome/src/system"
+	"github.com/ziflex/bumblebee-ui/src/system"
 	"os"
 )
 

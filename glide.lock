@@ -1,5 +1,5 @@
-hash: d9c63a2339f279f62828b2d7082741a74979ac8a75caaaf4951ace5041c92955
-updated: 2017-02-22T15:33:15.993810647-05:00
+hash: ed513020bc983abaaf9ca6e849279a4e001775910437736f6825135b12e23597
+updated: 2017-02-26T19:00:42.011626308-05:00
 imports:
 - name: github.com/go-errors/errors
   version: 8fa88b06e5974e97fbf9899a7f86a344bfd1f105
@@ -14,7 +14,7 @@ imports:
 - name: github.com/urfave/cli
   version: 0bdeddeeb0f650497d603c4ad7b20cfe685682f6
 - name: golang.org/x/net
-  version: 6b27048ae5e6ad1ef927e72e437531493de612fe
+  version: 41bba8d80bbfab43231ffdf4c210037baae5f6a3
   subpackages:
   - context
 - name: golang.org/x/sync

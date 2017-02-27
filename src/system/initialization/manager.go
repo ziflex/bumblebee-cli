@@ -2,8 +2,8 @@ package initialization
 
 import (
 	"github.com/go-errors/errors"
-	"github.com/ziflex/bumblebee-gnome/src/system/logging"
-	"github.com/ziflex/bumblebee-gnome/src/system/utils"
+	"github.com/ziflex/bumblebee-ui/src/system/logging"
+	"github.com/ziflex/bumblebee-ui/src/system/utils"
 )
 
 type (

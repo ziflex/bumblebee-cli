@@ -1,4 +1,4 @@
-package: github.com/ziflex/bumblebee-gnome
+package: github.com/ziflex/bumblebee-ui
 import:
 - package: github.com/Unknwon/goconfig
 - package: github.com/urfave/cli
