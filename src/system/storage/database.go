@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"github.com/go-errors/errors"
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/ziflex/bumblebee-ui/src/core"
+	"github.com/ziflex/bumblebee-cli/src/core"
 )
 
 const (

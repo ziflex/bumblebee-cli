@@ -3,11 +3,11 @@ package cmd
 import (
 	"github.com/go-errors/errors"
 	"github.com/urfave/cli"
-	"github.com/ziflex/bumblebee-ui/src/core"
-	"github.com/ziflex/bumblebee-ui/src/core/fs"
-	"github.com/ziflex/bumblebee-ui/src/system/logging"
-	"github.com/ziflex/bumblebee-ui/src/system/storage"
-	"github.com/ziflex/bumblebee-ui/src/system/utils"
+	"github.com/ziflex/bumblebee-cli/src/core"
+	"github.com/ziflex/bumblebee-cli/src/core/fs"
+	"github.com/ziflex/bumblebee-cli/src/system/logging"
+	"github.com/ziflex/bumblebee-cli/src/system/storage"
+	"github.com/ziflex/bumblebee-cli/src/system/utils"
 )
 
 var (

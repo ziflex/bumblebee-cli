@@ -3,8 +3,8 @@ package core
 import (
 	"fmt"
 	"github.com/go-errors/errors"
-	"github.com/ziflex/bumblebee-ui/src/core/fs"
-	"github.com/ziflex/bumblebee-ui/src/system/logging"
+	"github.com/ziflex/bumblebee-cli/src/core/fs"
+	"github.com/ziflex/bumblebee-cli/src/system/logging"
 	"strings"
 )
 

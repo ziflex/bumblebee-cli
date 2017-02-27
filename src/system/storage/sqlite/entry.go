@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/go-errors/errors"
-	"github.com/ziflex/bumblebee-ui/src/core"
+	"github.com/ziflex/bumblebee-cli/src/core"
 	"strings"
 )
 

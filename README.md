@@ -1,11 +1,13 @@
-# bumblebee-ui
-CLI tool that helps to manage Bumblebee dependant applications
+# bumblebee-cli
+> Bumblebee app registry
+
+CLI tool that helps to manage Bumblebee applications
 
 ## Installation
 
 ```sh
-    git clone https://github.com/ziflex/bumblebee-ui
-    cd ./bumblebee-ui
+    git clone https://github.com/ziflex/bumblebee-cli
+    cd ./bumblebee-cli
     make install
 ```
 
@@ -16,13 +18,13 @@ CLI tool that helps to manage Bumblebee dependant applications
 Register application and add prefix to dedicated ``.desktop`` file
 
 ```sh
-bumblebee-ui add atom
+bumblebee-cli add atom
 ````
 
 It is possible to pass as many application names as needed
 
 ```sh
-bumblebee-ui add atom gogland telegram slack
+bumblebee-cli add atom gogland telegram slack
 ````
 
 ### Remove app
@@ -30,13 +32,13 @@ bumblebee-ui add atom gogland telegram slack
 Unregister application and remove prefix from dedicated ``.desktop``
 
 ```sh
-bumblebee-ui remove atom
+bumblebee-cli remove atom
 ````
 
 It is possible to pass as many application names as needed
 
 ```sh
-bumblebee-ui remove atom gogland telegram slack
+bumblebee-cli remove atom gogland telegram slack
 ````
 
 ### Show registered apps
@@ -44,13 +46,13 @@ bumblebee-ui remove atom gogland telegram slack
 Check what apps are registered and whether they are synced with their dedicated ``.desktop`` files
 
 ```sh
-bumblebee-ui ls
+bumblebee-cli ls
 ```
 
 See all apps in system and whether they are registered
 
 ```sh
-bumblebee-ui ls -a
+bumblebee-cli ls -a
 ```
 
 ### Syncing
@@ -58,5 +60,13 @@ bumblebee-ui ls -a
 Update files of registered apps
 
 ```sh
-bumblebee-ui sync
+bumblebee-cli sync
+```
+
+### Settings
+
+Use another prefix
+
+```sh
+bumblebee-cli setting set prefix optirun
 ```

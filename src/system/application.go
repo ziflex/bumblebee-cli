@@ -5,13 +5,13 @@ import (
 	"fmt"
 	"github.com/natefinch/lumberjack"
 	"github.com/urfave/cli"
-	"github.com/ziflex/bumblebee-ui/src/system/cmd"
-	"github.com/ziflex/bumblebee-ui/src/system/initialization"
-	"github.com/ziflex/bumblebee-ui/src/system/initialization/initializers"
-	"github.com/ziflex/bumblebee-ui/src/system/logging"
-	"github.com/ziflex/bumblebee-ui/src/system/storage"
-	"github.com/ziflex/bumblebee-ui/src/system/storage/sqlite"
-	"github.com/ziflex/bumblebee-ui/src/system/utils"
+	"github.com/ziflex/bumblebee-cli/src/system/cmd"
+	"github.com/ziflex/bumblebee-cli/src/system/initialization"
+	"github.com/ziflex/bumblebee-cli/src/system/initialization/initializers"
+	"github.com/ziflex/bumblebee-cli/src/system/logging"
+	"github.com/ziflex/bumblebee-cli/src/system/storage"
+	"github.com/ziflex/bumblebee-cli/src/system/storage/sqlite"
+	"github.com/ziflex/bumblebee-cli/src/system/utils"
 	"path"
 	"strings"
 )
@@ -29,8 +29,8 @@ func NewApplication() (*Application, error) {
 
 	app.engine = cli.NewApp()
 	app.engine.Version = "2.2.0"
-	app.engine.Name = "bumblebee-ui"
-	app.engine.Usage = "CLI manager for bumblebee dependant applications"
+	app.engine.Name = "bumblebee-cli"
+	app.engine.Usage = "CLI manager for bumblebee applications"
 
 	logsDir := fmt.Sprintf("/var/log/%s/", strings.ToLower(app.engine.Name))
 
