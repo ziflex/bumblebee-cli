@@ -106,7 +106,7 @@ func (f *File) normalizeValues() {
 			val := key.Value()
 
 			if key.Comment != "" && strings.Contains(key.Comment, ";") {
-				key.SetValue(fmt.Sprintf("%s%s", val, key.Comment))
+				key.SetValue(f.encode(fmt.Sprintf("%s%s", val, key.Comment)))
 				key.Comment = ""
 			}
 		}
@@ -125,4 +125,8 @@ func (f *File) getKey(section *ini.Section, keyName string) (*ini.Key, error) {
 	}
 
 	return key, nil
+}
+
+func (f *File) encode(s string) string {
+	return fmt.Sprintf("`%s`", s)
 }
