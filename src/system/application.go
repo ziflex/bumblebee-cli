@@ -28,7 +28,7 @@ func NewApplication() (*Application, error) {
 	app := &Application{}
 
 	app.engine = cli.NewApp()
-	app.engine.Version = "2.2.0"
+	app.engine.Version = "2.2.1"
 	app.engine.Name = "bumblebee-cli"
 	app.engine.Usage = "CLI manager for bumblebee applications"
 
