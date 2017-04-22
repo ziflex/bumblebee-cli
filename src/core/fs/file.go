@@ -1,12 +1,15 @@
 package fs
 
 import (
-	"fmt"
 	"github.com/go-errors/errors"
 	"github.com/go-ini/ini"
 	"path/filepath"
 	"strings"
 )
+
+func init() {
+	ini.PrettyFormat = false
+}
 
 type File struct {
 	path     string
@@ -15,7 +18,7 @@ type File struct {
 }
 
 func LoadFile(path string) (*File, error) {
-	f, err := ini.Load(path)
+	f, err := ini.LoadSources(ini.LoadOptions{ IgnoreInlineComment: true }, path)
 
 	if err != nil {
 		return nil, errors.New(err)
@@ -89,28 +92,11 @@ func (f *File) SetValues(values map[string]string) error {
 }
 
 func (f *File) Save() error {
-	f.normalizeValues()
-
 	if err := f.engine.SaveTo(f.path); err != nil {
 		return errors.New(err)
 	}
 
 	return nil
-}
-
-func (f *File) normalizeValues() {
-	for _, section := range f.sections {
-		keys := section.Keys()
-
-		for _, key := range keys {
-			val := key.Value()
-
-			if key.Comment != "" && strings.Contains(key.Comment, ";") {
-				key.SetValue(f.encode(fmt.Sprintf("%s%s", val, key.Comment)))
-				key.Comment = ""
-			}
-		}
-	}
 }
 
 func (f *File) getKey(section *ini.Section, keyName string) (*ini.Key, error) {
@@ -125,8 +111,4 @@ func (f *File) getKey(section *ini.Section, keyName string) (*ini.Key, error) {
 	}
 
 	return key, nil
-}
-
-func (f *File) encode(s string) string {
-	return fmt.Sprintf("`%s`", s)
 }
