@@ -62,8 +62,13 @@ func NewSyncCommand(logger *logging.Logger, entryRepo storage.EntryRepository, s
 
 			fmt.Println("Synced:")
 
+			reported := make(map[string]bool)
+
 			for _, name := range results {
-				fmt.Println(name)
+				if _, ok := reported[name]; !ok {
+					fmt.Println(name)
+					reported[name] = true
+				}
 			}
 
 			return nil
