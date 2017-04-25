@@ -63,15 +63,24 @@ func (t *Transformer) transform(entries []*Entry, prefix string, strict bool) ([
 			continue
 		}
 
+		isAddedToTheList := false
 		nextValues := make(map[string]string)
 
 		for name, currentValue := range currentValues {
 			nextValue, update := t.transformValue(currentValue, prefix, strict)
 
-			if update {
-				results = append(results, strings.Replace(file.Name(), ".desktop", "", -1))
-				nextValues[name] = nextValue
+			if !update {
+				continue
 			}
+
+			nextValues[name] = nextValue
+
+			if isAddedToTheList {
+				continue
+			}
+
+			results = append(results, strings.Replace(file.Name(), ".desktop", "", -1))
+			isAddedToTheList = true
 		}
 
 		if len(nextValues) > 0 {
